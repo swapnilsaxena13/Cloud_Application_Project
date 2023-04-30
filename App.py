@@ -12,31 +12,31 @@ st.set_page_config(page_title='InNews🇮🇳: A Summarised News📰 Portal', pa
 
 def fetch_news_search_topic(topic):
     site = 'https://news.google.com/rss/search?q={}'.format(topic)
-    op = urlopen(site)  # Open that site
-    rd = op.read()  # read data from site
-    op.close()  # close the object
-    sp_page = soup(rd, 'xml')  # scrapping data from site
-    news_list = sp_page.find_all('item')  # finding news
+    op = urlopen(site)  
+    rd = op.read()  
+    op.close()  
+    sp_page = soup(rd, 'xml')  
+    news_list = sp_page.find_all('item')  
     return news_list
 
 
 def fetch_top_news():
     site = 'https://news.google.com/news/rss'
-    op = urlopen(site)  # Open that site
-    rd = op.read()  # read data from site
-    op.close()  # close the object
-    sp_page = soup(rd, 'xml')  # scrapping data from site
-    news_list = sp_page.find_all('item')  # finding news
+    op = urlopen(site)  
+    rd = op.read()  
+    op.close()  
+    sp_page = soup(rd, 'xml') 
+    news_list = sp_page.find_all('item')  
     return news_list
 
 
 def fetch_category_news(topic):
     site = 'https://news.google.com/news/rss/headlines/section/topic/{}'.format(topic)
-    op = urlopen(site)  # Open that site
-    rd = op.read()  # read data from site
-    op.close()  # close the object
-    sp_page = soup(rd, 'xml')  # scrapping data from site
-    news_list = sp_page.find_all('item')  # finding news
+    op = urlopen(site) 
+    rd = op.read()  
+    op.close()  
+    sp_page = soup(rd, 'xml')  
+    news_list = sp_page.find_all('item')  
     return news_list
 
 
@@ -55,7 +55,7 @@ def display_news(list_of_news, news_quantity):
     c = 0
     for news in list_of_news:
         c += 1
-        # st.markdown(f"({c})[ {news.title.text}]({news.link.text})")
+        
         st.write('**({}) {}**'.format(c, news.title.text))
         news_data = Article(news.link.text)
         try:
